@@ -1,6 +1,6 @@
-resource "aurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "rg" {
   for_each = var.rgnames
-  name = each.value.name
+  name     = each.value.name
   location = each.value.location
-  
+  tags     = lookup(each.value, "tags", {})
 }
